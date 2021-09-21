@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import axios from "axios";
 
 const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
 const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
 const URL = `https://api.airtable.com/v0/${airtableBase}/recentScores`;
-
 const config = {
   headers: {
     Authorization: `Bearer ${airtableKey}`,
@@ -12,19 +11,24 @@ const config = {
 };
 
 export default function RecentScores() {
-
-  async function fetchScores() {
-    console.log(airtableBase,airtableKey);
-    const res = await axios.get(URL, config);
-    console.log(res);
-  }
-
-  fetchScores();
   
-  
+  const [scores, setScores] = useState([]);
+
+  useEffect(() => {
+    async function fetchScores() {
+      const res = await axios.get(URL, config);
+      setScores(res.data.records);
+    }
+    fetchScores();
+  }, []);
+ 
   return (
     <div>
-      RECENT SCORES
+      {scores.map((record) => {
+        return (
+          <div>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
+        );
+      })}
     </div>
   )
 }
