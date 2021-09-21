@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import Turn from './Turn';
 
 export default function Player(props) {
   const [score, setScore] = useState(0);
@@ -19,7 +20,9 @@ export default function Player(props) {
   return (
     <div>
       <br/>
-      {props.playerName}___Score:{score}<br/>
+      {props.playerName}---
+      {props.currentTurn===props.playerTurn?<Turn />:score}
+      <br />
       <button
         disabled={props.currentTurn !== props.playerTurn}
         onClick={handleRoll}
