@@ -12,25 +12,25 @@ const config = {
 };
 
 export default function CreateGame(props) {
-  const [gameName, setGameName] = useState("");
-  const [players, setPlayers] = useState([]);
-  const [gameID,setGameID]=useState("");
+  const [inputGameName, setInputGameName] = useState("");
+  // const [players, setPlayers] = useState([]);
+  // const [gameID,setGameID]=useState("");
   
   props.setPlayGame(false);
 
 
   function handleAddPlayer(e) {
     e.preventDefault();
-    let newPlayer = `Player ${players.length ? players.length + 1 : 1}`;
-    setPlayers([...players, newPlayer]);
+    let newPlayer = `Player ${props.players.length ? props.players.length + 1 : 1}`;
+    props.setPlayers([...props.players, newPlayer]);
   }; 
   
   async function handleStartGame(e) {
     e.preventDefault();
-    const fields = { gameName, winner: players[0], score: 0 };
+    const fields = { gameName: inputGameName, winner: props.players[0], score: 0 };
     let res = await axios.post(URL, { fields }, config);
-    setGameID(res.data.id);
-    console.log(fields);
+    props.setGameID(res.data.id);
+    props.setGameName(inputGameName);
     props.setPlayGame(true);
   }
 
@@ -38,25 +38,23 @@ export default function CreateGame(props) {
   return (
     <div>
       CREATE GAME
-      <h3>{gameName}</h3>
-      <input type="text" placeholder="Name this game" onChange={(e) => { setGameName(e.target.value) }} value={gameName} />
+      <h3>{inputGameName}</h3>
+      <input type="text" placeholder="Name this game" onChange={(e) => { setInputGameName(e.target.value) }} value={inputGameName} />
       <br />
       <div>
-        {players.map(player => <div>{player}</div>)}
+        {props.players.map((player,index) => <div key={index}>{player}</div>)}
       </div>
       <br />
       <button onClick={handleAddPlayer}>
         Add player
       </button>
       <br />      
-      {/* <Link to={`/game/${gameID}`}> */}
         <button
           onClick={handleStartGame}
-          disabled={!gameName.length || players.length < 1}
+          disabled={!inputGameName.length || props.players.length < 1}
         >
           Start game
         </button>
-      {/* </Link> */}
     </div>
   )
 }

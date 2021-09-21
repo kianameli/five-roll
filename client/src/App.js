@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <header>
         <h1>Five Roll</h1>
-        <Navbar />
+        <Navbar playGame={playGame} setPlayGame={setPlayGame} />
       </header>
 
       {/* ROUTES */}
@@ -31,12 +31,13 @@ function App() {
         <RecentScores />
       </Route>
 
-      <Route path="/new-game">
-        {playGame ? (
+      <Route path="/game">
+        <Game playGame={playGame} setPlayGame={setPlayGame} />
+        {/* {playGame ? (
           <Game />
         ) : (
           <CreateGame playGame={playGame} setPlayGame={setPlayGame} />
-        )}
+        )} */}
       </Route>
       {/* 
       <Route path="/game/:id">

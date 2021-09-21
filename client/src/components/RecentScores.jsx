@@ -17,6 +17,7 @@ export default function RecentScores() {
   useEffect(() => {
     async function fetchScores() {
       const res = await axios.get(URL, config);
+      res.data.records.sort((a, b) => b.fields.score - a.fields.score);
       setScores(res.data.records);
     }
     fetchScores();
