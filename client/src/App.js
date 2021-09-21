@@ -1,11 +1,10 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Route, Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Route } from "react-router-dom";
 import Home from "./components/Home";
 import HowTo from "./components/HowTo";
 import RecentScores from "./components/RecentScores";
-import CreateGame from "./components/CreateGame";
+// import CreateGame from "./components/CreateGame";
 import Game from "./components/Game";
 import Navbar from "./components/Navbar";
 
@@ -33,16 +32,7 @@ function App() {
 
       <Route path="/game">
         <Game playGame={playGame} setPlayGame={setPlayGame} />
-        {/* {playGame ? (
-          <Game />
-        ) : (
-          <CreateGame playGame={playGame} setPlayGame={setPlayGame} />
-        )} */}
       </Route>
-      {/* 
-      <Route path="/game/:id">
-        <Game />
-      </Route> */}
     </div>
   );
 }

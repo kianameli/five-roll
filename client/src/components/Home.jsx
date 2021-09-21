@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function Home(props) {
-  props.setPlayGame(false);
+  if (props.playGame) { props.setPlayGame(false) };
   
   return (
     <div>

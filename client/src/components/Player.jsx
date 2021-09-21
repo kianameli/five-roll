@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState } from 'react'
 
 export default function Player(props) {
   const [score, setScore] = useState(0);
@@ -11,6 +11,8 @@ export default function Player(props) {
     if (roll > props.currentWinnerScore) {
       props.setCurrentWinnerScore(roll);
       props.setCurrentWinnerName(props.playerName);
+    } else if (roll === props.currentWinnerScore) {
+      //handleTie
     }
   }
   

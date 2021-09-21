@@ -25,9 +25,9 @@ export default function RecentScores() {
  
   return (
     <div>
-      {scores.map((record) => {
+      {scores.map((record,index) => {
         return (
-          <div>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
+          <div key={index}>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
         );
       })}
     </div>

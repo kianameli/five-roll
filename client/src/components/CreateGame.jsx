@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React,{useState,useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
 
 const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
 const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -16,7 +16,7 @@ export default function CreateGame(props) {
   // const [players, setPlayers] = useState([]);
   // const [gameID,setGameID]=useState("");
   
-  props.setPlayGame(false);
+  if (props.playGame) { props.setPlayGame(false) };
 
 
   function handleAddPlayer(e) {
