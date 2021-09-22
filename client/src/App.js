@@ -4,23 +4,28 @@ import { Route } from "react-router-dom";
 import Home from "./components/Home";
 import HowTo from "./components/HowTo";
 import RecentScores from "./components/RecentScores";
-// import CreateGame from "./components/CreateGame";
-import Game from "./components/Game";
+// import Game from "./components/Game";
 import Navbar from "./components/Navbar";
+import CreateGame from "./components/CreateGame";
+import PlayGame from "./components/PlayGame";
 
 function App() {
   const [playGame, setPlayGame] = useState(false);
+
+  const [gameID, setGameID] = useState("");
+  const [gameName, setGameName] = useState("");
+  const [players, setPlayers] = useState([]);
 
   return (
     <div className="App">
       <header>
         <h1>Five Roll</h1>
-        <Navbar playGame={playGame} setPlayGame={setPlayGame} />
+        <Navbar />
       </header>
 
       {/* ROUTES */}
       <Route exact path="/">
-        <Home playGame={playGame} setPlayGame={setPlayGame} />
+        <Home />
       </Route>
 
       <Route path="/how-to">
@@ -29,9 +34,29 @@ function App() {
       <Route path="/recent-scores">
         <RecentScores />
       </Route>
-
+      {/* 
       <Route path="/game">
         <Game playGame={playGame} setPlayGame={setPlayGame} />
+      </Route> */}
+      <Route path="/create-game">
+        <CreateGame
+          gameName={gameName}
+          setGameName={setGameName}
+          players={players}
+          setPlayers={setPlayers}
+          gameID={gameID}
+          setGameID={setGameID}
+        />
+      </Route>
+      <Route path="/play-game">
+        <PlayGame
+          gameName={gameName}
+          setGameName={setGameName}
+          players={players}
+          setPlayers={setPlayers}
+          gameID={gameID}
+          setGameID={setGameID}
+        />
       </Route>
     </div>
   );

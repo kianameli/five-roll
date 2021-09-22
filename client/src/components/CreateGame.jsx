@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
 const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -16,8 +16,15 @@ export default function CreateGame(props) {
   // const [players, setPlayers] = useState([]);
   // const [gameID,setGameID]=useState("");
   
-  if (props.playGame) { props.setPlayGame(false) };
+  // if (props.playGame) { props.setPlayGame(false) };
 
+
+  // RESET GAME STATES
+  useEffect(() => {
+    props.setGameID("");
+    props.setGameName("");
+    props.setPlayers([]);
+  }, []);
 
   function handleAddPlayer(e) {
     e.preventDefault();
@@ -26,12 +33,12 @@ export default function CreateGame(props) {
   }; 
   
   async function handleStartGame(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const fields = { gameName: inputGameName, winner: props.players[0], score: 0 };
     let res = await axios.post(URL, { fields }, config);
     props.setGameID(res.data.id);
     props.setGameName(inputGameName);
-    props.setPlayGame(true);
+    // props.setPlayGame(true);
   }
 
   
@@ -49,12 +56,12 @@ export default function CreateGame(props) {
         Add player
       </button>
       <br />      
-        <button
-          onClick={handleStartGame}
-          disabled={!inputGameName.length || props.players.length < 1}
-        >
-          Start game
-        </button>
+       
+        
+      {(inputGameName.length && props.players.length > 1) ?
+        <Link to="/play-game" onClick={handleStartGame}> Start game</Link>
+        : <button disabled >Start game</button>}
+        
     </div>
   )
 }

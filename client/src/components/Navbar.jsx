@@ -6,7 +6,7 @@ export default function Navbar(props) {
       <Link to="/">Home</Link>
       <Link to="/how-to">How to</Link>
       <Link to="/recent-scores">Recent scores</Link>
-      <Link to="/game">New game</Link>
+      <Link to="/create-game">New game</Link>
     </div>
   )
 }
