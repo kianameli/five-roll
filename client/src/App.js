@@ -10,7 +10,7 @@ import CreateGame from "./components/CreateGame";
 import PlayGame from "./components/PlayGame";
 
 function App() {
-  const [playGame, setPlayGame] = useState(false);
+  // const [playGame, setPlayGame] = useState(false);
 
   const [gameID, setGameID] = useState("");
   const [gameName, setGameName] = useState("");
