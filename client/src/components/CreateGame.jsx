@@ -13,10 +13,6 @@ const config = {
 
 export default function CreateGame(props) {
   const [inputGameName, setInputGameName] = useState("");
-  // const [players, setPlayers] = useState([]);
-  // const [gameID,setGameID]=useState("");
-  
-  // if (props.playGame) { props.setPlayGame(false) };
 
 
   // RESET GAME STATES
@@ -24,6 +20,7 @@ export default function CreateGame(props) {
     props.setGameID("");
     props.setGameName("");
     props.setPlayers([]);
+    // eslint-disable-next-line
   }, []);
 
   function handleAddPlayer(e) {

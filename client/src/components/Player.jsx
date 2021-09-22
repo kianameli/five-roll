@@ -1,34 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Turn from './Turn';
 
 export default function Player(props) {
   const [score, setScore] = useState(0);
+  const [dice,setDice]=useState(
+    [
+      {name:"d20",sides:20,score:0,removed:false},
+      {name:"d12",sides:12,score:0,removed:false},
+      {name:"d10",sides:10,score:0,removed:false},
+      {name:"d6a",sides:6,score:0,removed:false},
+      {name:"d6b",sides:6,score:0,removed:false}
+    ]);
 
-  const handleRoll = (e) => {
-    e.preventDefault();
-    let roll = Math.floor(Math.random() * 5+1);
-    setScore(roll);
+  useEffect(() => {
+    console.log(props.currentTurn);
     props.setCurrentTurn(props.currentTurn + 1);
-    if (roll > props.currentWinnerScore) {
-      props.setCurrentWinnerScore(roll);
+    if (score > props.currentWinnerScore) {
+      props.setCurrentWinnerScore(score);
       props.setCurrentWinnerName(props.playerName);
-    } else if (roll === props.currentWinnerScore) {
+    } else if (score === props.currentWinnerScore) {
       //handleTie
     }
-  }
+  },[score]);
   
   return (
     <div>
       <br/>
-      {props.playerName}---
-      {props.currentTurn===props.playerTurn?<Turn />:score}
+      {props.playerName}---{score?score:""}
+      {/* show Turn for player's turn, else show non0 score, else blank */}
+      {props.currentTurn === props.playerTurn ?
+        <Turn
+          score={score} setScore={setScore}
+          dice={dice} setDice={setDice}
+        />
+        : dice.map(die=>{<div>{die.name}</div>})}
+      
       <br />
-      <button
-        disabled={props.currentTurn !== props.playerTurn}
-        onClick={handleRoll}
-      >
-        Roll
-      </button>
+      {/* <button disabled={props.currentTurn !== props.playerTurn}>
+        Roll-old
+      </button> */}
       <br/>
     </div>
   )

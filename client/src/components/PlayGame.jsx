@@ -32,7 +32,7 @@ export default function PlayGame(props) {
   return (
     <div>
       <h3>Welcome to {props.gameName}!</h3>
-      <h2>{gameOver ? `GAME OVER!` : `${props.players[currentTurn]}'s turn`}</h2>
+      <h2>{gameOver ? `GAME OVER!` : `${props.players[currentTurn-1]}'s turn`}</h2>
       
       {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
       
@@ -40,7 +40,7 @@ export default function PlayGame(props) {
         return (
           <Player key={index}
             playerName={player}
-            playerTurn={index}
+            playerTurn={index+1}
             currentTurn={currentTurn} setCurrentTurn={setCurrentTurn}
             currentWinnerName={currentWinnerName} setCurrentWinnerName={setCurrentWinnerName}
             currentWinnerScore={currentWinnerScore} setCurrentWinnerScore={setCurrentWinnerScore}
