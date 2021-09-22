@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-// import { useParams } from 'react-router';
 import CreateGame from './CreateGame';
 import PlayGame from './PlayGame';
 

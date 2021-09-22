@@ -13,7 +13,6 @@ export default function Player(props) {
     ]);
 
   useEffect(() => {
-    console.log(props.currentTurn);
     props.setCurrentTurn(props.currentTurn + 1);
     if (score > props.currentWinnerScore) {
       props.setCurrentWinnerScore(score);
@@ -21,6 +20,7 @@ export default function Player(props) {
     } else if (score === props.currentWinnerScore) {
       //handleTie
     }
+  // eslint-disable-next-line
   },[score]);
   
   return (
@@ -33,7 +33,13 @@ export default function Player(props) {
           score={score} setScore={setScore}
           dice={dice} setDice={setDice}
         />
-        : dice.map(die=>{<div>{die.name}</div>})}
+        : <div>
+          {dice.map((die) => {
+            return (
+              <div key={die.name}>
+                {die.name}: {die.score ? die.score : ""}
+              </div>);})}
+        </div>}
       
       <br />
       {/* <button disabled={props.currentTurn !== props.playerTurn}>

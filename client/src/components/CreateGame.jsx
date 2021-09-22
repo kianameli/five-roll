@@ -13,7 +13,7 @@ const config = {
 
 export default function CreateGame(props) {
   const [inputGameName, setInputGameName] = useState("");
-
+  const [inputPlayers, setInputPlayers] = useState([]);
 
   // RESET GAME STATES
   useEffect(() => {
@@ -27,15 +27,15 @@ export default function CreateGame(props) {
     e.preventDefault();
     let newPlayer = `Player ${props.players.length ? props.players.length + 1 : 1}`;
     props.setPlayers([...props.players, newPlayer]);
-  }; 
-  
+  };
+
   async function handleStartGame(e) {
     // e.preventDefault();
     const fields = { gameName: inputGameName, winner: props.players[0], score: 0 };
     let res = await axios.post(URL, { fields }, config);
     props.setGameID(res.data.id);
     props.setGameName(inputGameName);
-    // props.setPlayGame(true);
+    props.setPlayers(inputPlayers);
   }
 
   
@@ -44,9 +44,23 @@ export default function CreateGame(props) {
       CREATE GAME
       <h3>{inputGameName}</h3>
       <input type="text" placeholder="Name this game" onChange={(e) => { setInputGameName(e.target.value) }} value={inputGameName} />
-      <br />
+      <br /><br />
       <div>
-        {props.players.map((player,index) => <div key={index}>{player}</div>)}
+        PLAYERS
+        {props.players.map((player, index) => {
+          return (
+            <div key={index}>
+              <input type="text" placeholder={player}
+                onChange={(e) => {
+                  e.preventDefault();
+                  let newPlayers = props.players;
+                  newPlayers[index] = e.target.value;
+                  setInputPlayers(newPlayers);
+                }}
+              />
+            </div>
+          );
+        })}
       </div>
       <br />
       <button onClick={handleAddPlayer}>
@@ -55,7 +69,7 @@ export default function CreateGame(props) {
       <br />      
        
         
-      {(inputGameName.length && props.players.length > 1) ?
+      {(inputGameName.length && props.players.length > 1)?
         <Link to="/play-game" onClick={handleStartGame}> Start game</Link>
         : <button disabled >Start game</button>}
         
