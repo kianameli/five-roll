@@ -1,16 +1,7 @@
-import axios from 'axios';
 import React,{ useEffect, useState } from 'react';
 import Player from './Player';
 import { useParams } from 'react-router';
-
-const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
-const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
-const URL = `https://api.airtable.com/v0/${airtableBase}/recentScores`;
-const config = {
-  headers: {
-    Authorization: `Bearer ${airtableKey}`,
-  },
-};
+import { updateScore } from '../services';
 
 export default function PlayGame(props) {
   const [currentTurn, setCurrentTurn] = useState(0);
@@ -20,17 +11,17 @@ export default function PlayGame(props) {
   const { id } = useParams();
 
   useEffect(() => {
-    const updateScore = async () => {
+    const updateWinnerScore = async () => {
       const fields = {
         gameName: props.gameName,
-        winner: currentWinnerName,
+        winner: currentWinnerName?currentWinnerName:"player",
         score: currentWinnerScore
       };
-      await axios.put(`${URL}/${id}`, {fields}, config);
+      updateScore(fields, id);
     }
     if (currentTurn > props.players.length) {
       setGameOver(true);
-      updateScore();
+      updateWinnerScore();
     }
   // eslint-disable-next-line
   }, [currentTurn]);

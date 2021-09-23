@@ -1,31 +1,15 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
-const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
-const URL = `https://api.airtable.com/v0/${airtableBase}/recentScores`;
-const config = {
-  headers: {
-    Authorization: `Bearer ${airtableKey}`,
-  },
-};
+import { fetchNewGameRecord, updateGameRecord } from '../services';
 
 export default function CreateGame(props) {
   const [inputGameName, setInputGameName] = useState("");
   const [inputPlayers, setInputPlayers] = useState([]);
   const [newGameID, setNewGameID] = useState("");
 
-  useEffect(() => {
-    // create a new game record 
+  useEffect(() => { 
     const createGameRecord = async () => {
-      const fields = {
-        gameName: inputGameName,
-        winner: "",
-        score: 0
-      };
-      let res = await axios.post(URL, { fields }, config);
-      setNewGameID(res.data.id);
+      setNewGameID(await fetchNewGameRecord());
     }
     createGameRecord();
   // eslint-disable-next-line
@@ -47,8 +31,7 @@ export default function CreateGame(props) {
   async function handleStartGame(e) {
     // e.preventDefault();
     const fields = { gameName: inputGameName, winner:"", score: 0 };
-    //put gameName and placeholder values to airtable
-    await axios.put(`${URL}/${newGameID}`, { fields }, config);
+    await updateGameRecord(fields, newGameID);
     props.setGameID(newGameID);
     props.setGameName(inputGameName);
     props.setPlayers(inputPlayers);
