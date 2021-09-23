@@ -48,7 +48,7 @@ function App() {
           setGameID={setGameID}
         />
       </Route>
-      <Route path="/play-game">
+      <Route exact path="/play-game/:id">
         <PlayGame
           gameName={gameName}
           setGameName={setGameName}

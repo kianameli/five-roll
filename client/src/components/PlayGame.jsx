@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React,{ useEffect, useState } from 'react';
 import Player from './Player';
+import { useParams } from 'react-router';
 
 const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
 const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -16,6 +17,7 @@ export default function PlayGame(props) {
   const [currentWinnerName, setCurrentWinnerName] = useState("");
   const [currentWinnerScore, setCurrentWinnerScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     const updateScore = async () => {
@@ -31,7 +33,7 @@ export default function PlayGame(props) {
 
   return (
     <div>
-      <h3>Welcome to {props.gameName}!</h3>
+      <h3>Welcome to {props.gameName}! {props.gameID}</h3>
       <h2>{gameOver ? `GAME OVER!` : `${props.players[currentTurn-1]}'s turn`}</h2>
       
       {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
