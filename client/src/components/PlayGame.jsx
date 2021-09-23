@@ -21,14 +21,18 @@ export default function PlayGame(props) {
 
   useEffect(() => {
     const updateScore = async () => {
-      const fields = { gameName: props.gameName, winner: currentWinnerName, score: currentWinnerScore };
-      await axios.put(`${URL}/${props.gameID}`, {fields}, config);
+      const fields = {
+        gameName: props.gameName,
+        winner: currentWinnerName,
+        score: currentWinnerScore
+      };
+      await axios.put(`${URL}/${id}`, {fields}, config);
     }
-    if (currentTurn >= props.players.length) {
+    if (currentTurn > props.players.length) {
       setGameOver(true);
       updateScore();
     }
-      // eslint-disable-next-line
+  // eslint-disable-next-line
   }, [currentTurn]);
 
   return (

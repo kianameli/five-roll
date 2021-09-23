@@ -16,48 +16,39 @@ export default function CreateGame(props) {
   const [inputPlayers, setInputPlayers] = useState([]);
   const [newGameID, setNewGameID] = useState("");
 
-  //I only want this to run on initial load?
   useEffect(() => {
-    // INIT A RECORD FOR NEW GAME
+    // create a new game record 
     const createGameRecord = async () => {
-      const fields = { gameName: inputGameName, winner: "", score: 0 };
+      const fields = {
+        gameName: inputGameName,
+        winner: "",
+        score: 0
+      };
       let res = await axios.post(URL, { fields }, config);
       setNewGameID(res.data.id);
-      // props.setGameID(res.data.id);
     }
     createGameRecord();
-    // props.setGameID("");
-    // RESET GAME STATES
-    props.setGameName("");
-    props.setPlayers([]);
-    // eslint-disable-next-line
+  // eslint-disable-next-line
   }, []);
 
-  // adding new player gives name "Player #"
-  // starts at 1 if players(state) is empty, else # = length
   function handleAddPlayer(e) {
-    e.preventDefault();
-    let newPlayer = `Player ${props.players.length ? props.players.length + 1 : 1}`;
-    props.setPlayers([...props.players, newPlayer]);
+    // e.preventDefault();
+    let newPlayer = `Player ${inputPlayers.length ? inputPlayers.length + 1 : 1}`;
+    setInputPlayers([...inputPlayers, newPlayer]);
   };
 
   function handleRemovePlayer(e) {
-    // e.preventDefault();
-    console.log(props.players);
+    e.preventDefault();
     let newPlayers = props.players;
     newPlayers.splice(e.target.value, 1);
     props.setPlayers(newPlayers);
-    console.log(newPlayers);
-
   }
-  //starting game puts gameName and placeholder values to airtable
-  //the link will route to PlayGame
+
   async function handleStartGame(e) {
     // e.preventDefault();
     const fields = { gameName: inputGameName, winner:"", score: 0 };
-    let res = await axios.put(`${URL}/${newGameID}`, { fields }, config);
-    console.log(res.data);
-    // newGameID = res.data.id;
+    //put gameName and placeholder values to airtable
+    await axios.put(`${URL}/${newGameID}`, { fields }, config);
     props.setGameID(newGameID);
     props.setGameName(inputGameName);
     props.setPlayers(inputPlayers);
@@ -65,20 +56,21 @@ export default function CreateGame(props) {
 
   return (
     <div>
-      CREATE GAME
-      {/* <p>{props.gameID}</p> */}
-      <br/>
+      <br />
+
+      {/* GAME NAME */}
       <input
         id="input-game-name"
         type="text"
         placeholder="Name this game"
-        value={inputGameName} 
         onChange={(e) => { setInputGameName(e.target.value) }}
       />
       <br /><br />
+      
+      {/* PLAYERS */}
       <div>
         PLAYERS
-        {props.players.map((player, index) => {
+        {inputPlayers.map((player, index) => {
           return (
             <div key={index}>
               <input
@@ -87,39 +79,34 @@ export default function CreateGame(props) {
                 placeholder={player}
                 onChange={(e) => {
                   e.preventDefault();
-                  let newPlayers = props.players;
+                  let newPlayers = inputPlayers;
                   newPlayers[index] = e.target.value;
                   setInputPlayers(newPlayers);
                 }}
               />
+              {/* REMOVE PLAYER */}
               <button
                 id="remove-player-button"
                 value={index}
                 onClick={handleRemovePlayer}>x
-                {/* //   (e) => {
-                // e.preventDefault();
-                // console.log(props.players);
-                // let newPlayers = props.players;
-                // newPlayers.splice(index, 1);
-                // props.setPlayers(newPlayers);
-                // console.log(newPlayers);
-                // }} */}
               </button>
             </div>
           );
         })}
       </div>
       <br />
+
+      {/* ADD PLAYER */}
       <button
         id="add-player-button"
         onClick={handleAddPlayer}>Add player
       </button>
       <br />           
-        
-      {(inputGameName.length && props.players.length > 1)?
+
+      {/* START BUTTON */}
+      {(inputGameName.length && inputPlayers.length > 1)?
         <Link to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
-        : <button disabled >Start game</button>}
-        
+        : <button disabled >Start game</button>}      
     </div>
   )
 }
