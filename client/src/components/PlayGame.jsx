@@ -28,7 +28,7 @@ export default function PlayGame(props) {
 
   return (
     <div>
-      <h3>Welcome to {props.gameName}! {props.gameID}</h3>
+      <h3>Welcome to {props.gameName}! </h3>
       <h2>{gameOver ? `GAME OVER!` : `${props.players[currentTurn]}'s turn`}</h2>
       
       {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
