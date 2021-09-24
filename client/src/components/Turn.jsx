@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export default function Turn(props) {
   
   const {dice,setDice}=props

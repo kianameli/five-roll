@@ -13,7 +13,9 @@ export default function Player(props) {
     ]);
 
   useEffect(() => {
-    props.setCurrentTurn(props.currentTurn + 1);
+    if (score) {
+      props.setCurrentTurn(props.currentTurn + 1);
+    }
     if (score > props.currentWinnerScore) {
       props.setCurrentWinnerScore(score);
       props.setCurrentWinnerName(props.playerName);

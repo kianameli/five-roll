@@ -7,25 +7,26 @@ export default function CreateGame(props) {
   const [inputPlayers, setInputPlayers] = useState([]);
   const [newGameID, setNewGameID] = useState("");
 
+  console.log("outside");
   useEffect(() => { 
-    const createGameRecord = async () => {
-      setNewGameID(await fetchNewGameRecord());
+    if (newGameID) {
+      console.log(newGameID, inputPlayers);
+    } else {
+      const createGameRecord = async () => {
+        setNewGameID(await fetchNewGameRecord());
+      }
+      createGameRecord();
     }
-    createGameRecord();
   // eslint-disable-next-line
   }, []);
 
-  function handleAddPlayer(e) {
-    // e.preventDefault();
+  function handleAddPlayer() {
     let newPlayer = `Player ${inputPlayers.length ? inputPlayers.length + 1 : 1}`;
     setInputPlayers([...inputPlayers, newPlayer]);
   };
 
-  function handleRemovePlayer(e) {
-    e.preventDefault();
-    let newPlayers = props.players;
-    newPlayers.splice(e.target.value, 1);
-    props.setPlayers(newPlayers);
+  function handleRemovePlayer(player) {
+    setInputPlayers(prev=>prev.filter(item => item !== player));
   }
 
   async function handleStartGame(e) {
@@ -41,6 +42,13 @@ export default function CreateGame(props) {
     <div>
       <br />
 
+      {/* START BUTTON */}
+
+      {(inputGameName.length && inputPlayers.length > 1)?
+        <Link to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
+        : <button disabled >Start game</button>}
+      
+      <br/>
       {/* GAME NAME */}
       <input
         id="input-game-name"
@@ -55,7 +63,7 @@ export default function CreateGame(props) {
         PLAYERS
         {inputPlayers.map((player, index) => {
           return (
-            <div key={index}>
+            <div key={index} id="input-player">
               <input
                 id="input-player-name"
                 type="text"
@@ -70,8 +78,8 @@ export default function CreateGame(props) {
               {/* REMOVE PLAYER */}
               <button
                 id="remove-player-button"
-                value={index}
-                onClick={handleRemovePlayer}>x
+                onClick={() => handleRemovePlayer(player)}
+              >x
               </button>
             </div>
           );
@@ -86,10 +94,6 @@ export default function CreateGame(props) {
       </button>
       <br />           
 
-      {/* START BUTTON */}
-      {(inputGameName.length && inputPlayers.length > 1)?
-        <Link to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
-        : <button disabled >Start game</button>}      
     </div>
   )
 }
