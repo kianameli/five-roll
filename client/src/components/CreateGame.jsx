@@ -49,7 +49,7 @@ export default function CreateGame(props) {
         PLAYERS
         {inputPlayers.map((player, index) => {
           return (
-            <InputPlayer key={index} player={player}
+            <InputPlayer key={index} index={index} player={player}
               inputPlayers={inputPlayers} setInputPlayers={setInputPlayers}
             />
           );

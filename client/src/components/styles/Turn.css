@@ -1,0 +1,10 @@
+.turn {
+  display: flexbox;
+  flex-flow: column;
+}
+.dice {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: 80%;
+}

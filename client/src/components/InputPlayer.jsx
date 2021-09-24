@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function InputPlayer(props) {
-  const { key, player, inputPlayers, setInputPlayers } = props;
+  const { index, player, inputPlayers, setInputPlayers } = props;
 
   function handleRemovePlayer(player) {
     setInputPlayers(prev=>prev.filter(item => item !== player));
@@ -10,12 +10,12 @@ export default function InputPlayer(props) {
   function handleChangePlayer(e) {
     e.preventDefault();
     let newPlayers = inputPlayers;
-    newPlayers[key] = e.target.value;
+    newPlayers[index] = e.target.value;
     setInputPlayers(newPlayers);
   }
 
   return (
-    <div key={key} id="input-player">
+    <div key={index} id="input-player">
       <input
         id="input-player-name"
         type="text"

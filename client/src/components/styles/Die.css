@@ -1,0 +1,24 @@
+.die {
+  display: flexbox;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+#score {
+  font-size: x-large;
+  font-weight: bolder;
+  object-fit: cover;
+}
+.die-image {
+  max-height: 50%;
+  padding-top: 15%;
+}
+#not-removed {
+  border: none;
+}
+#to-be-removed {
+  border: solid 5px red;
+}
+#already-removed {
+  background-color: lightslategray;
+}

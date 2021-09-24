@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import Die from './Die';
+import './styles/Turn.css';
 
 export default function Turn(props) {
   
@@ -30,17 +32,10 @@ export default function Turn(props) {
   }
   
   return (
-    <div>
-      TURN
-      {dice.map(die => {
-        return (
-          <div key={die.name}>
-            {die.removed ? die.score ? "XXX" : "X" : ""}
-            {die.name}: {die.score}
-            {die.removed ? die.score ? "XXX" : "X" : ""}
-          </div>
-        );
-      })}
+    <div className="turn">
+      <div className="dice">
+        {dice.map(die => <Die key={die.name} die={die}/>)}
+      </div>
       <button onClick={handleRoll}>Roll</button>
 
     </div>
