@@ -93,7 +93,6 @@ Time frames are also key in the development cycle. You have limited time to code
 | Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Total            |    H     |      6hrs      |     5hrs      |    5hrs     |
 
 ## SWOT Analysis
