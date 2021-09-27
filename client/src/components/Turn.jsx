@@ -1,10 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Die from './Die';
 import './styles/Turn.css';
 
 export default function Turn(props) {
   
-  const {dice,setDice}=props
+  const { dice, setDice } = props
+  const [endTurn, setEndTurn] = useState(false);
+  const [turnHighestRoll,setTurnHighestRoll]=useState(0)
 
   const handleRoll = (e) => {
     e.preventDefault();
@@ -27,8 +29,15 @@ export default function Turn(props) {
       });
     setDice(newDice);
     if (newDice.filter(die => !die.removed).length === 1) {
-      props.setScore(highestRoll);
+      //props.setScore(highestRoll);
+      setTurnHighestRoll(highestRoll);
+      setEndTurn(true);
     }
+  }
+
+  const handleEndTurn = (e) => {
+    e.preventDefault();
+    props.setScore(turnHighestRoll);
   }
   
   return (
@@ -36,7 +45,8 @@ export default function Turn(props) {
       <div className="dice">
         {dice.map(die => <Die key={die.name} die={die}/>)}
       </div>
-      <button onClick={handleRoll}>Roll</button>
+      {endTurn ? <button onClick={handleEndTurn}>End turn</button>
+        : <button onClick={handleRoll}>Roll</button>}
 
     </div>
   )

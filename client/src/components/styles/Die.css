@@ -3,6 +3,7 @@
   flex-flow: column nowrap;
   justify-content: flex-end;
   max-width: 100%;
+  margin: 1px;
 }
 #score {
   font-size: x-large;
@@ -17,7 +18,7 @@
   border: none;
 }
 #to-be-removed {
-  border: solid 5px red;
+  border: solid 2px red;
 }
 #already-removed {
   background-color: lightslategray;

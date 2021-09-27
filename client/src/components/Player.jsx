@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Turn from './Turn';
+import './styles/Player.css'
 
 export default function Player(props) {
   const [score, setScore] = useState(0);
@@ -26,28 +27,16 @@ export default function Player(props) {
   },[score]);
   
   return (
-    <div>
-      <br/>
-      {props.playerName}---{score?score:""}
-      {/* show Turn for player's turn, else show non0 score, else blank */}
-      {props.currentTurn === props.playerTurn ?
-        <Turn
-          score={score} setScore={setScore}
-          dice={dice} setDice={setDice}
-        />
-        : <div>
-          {dice.map((die) => {
-            return (
-              <div key={die.name}>
-                {die.name}: {die.score ? die.score : ""}
-              </div>);})}
-        </div>}
-      
-      <br />
-      {/* <button disabled={props.currentTurn !== props.playerTurn}>
-        Roll-old
-      </button> */}
-      <br/>
-    </div>
+    <div className="player">{
+      props.currentTurn === props.playerTurn ?
+        <div className="current-turn">
+          <div >{props.playerName}</div>
+          <Turn
+            score={score} setScore={setScore}
+            dice={dice} setDice={setDice}
+          />
+        </div>
+        : score ? <div className="already-turn">{props.playerName} scored {score} </div> : <div className="not-yet-turn">{props.playerName}</div>
+    }</div>
   )
 }

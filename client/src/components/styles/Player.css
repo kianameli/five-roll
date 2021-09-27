@@ -1,0 +1,20 @@
+.player {
+  text-align: left;
+  margin: 1% 5% 0% 5%;
+}
+.current-turn {
+  color: rebeccapurple;
+  font-weight: bold;
+  border-left: solid 2px rebeccapurple;
+  padding: 1px;
+}
+.already-turn {
+  color: lightsteelblue;
+  font-weight: bolder;
+  border-left: solid 2px white;
+  padding: 1px;
+}
+.not-yet-turn {
+  border-left: solid 2px white;
+  padding: 1px;
+}

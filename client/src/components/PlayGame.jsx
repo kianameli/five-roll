@@ -29,9 +29,9 @@ export default function PlayGame(props) {
   return (
     <div>
       <h3>Welcome to {props.gameName}! </h3>
-      <h2>{gameOver ? `GAME OVER!` : `${props.players[currentTurn]}'s turn`}</h2>
+      <h2>{gameOver ? `GAME OVER!` : ``}</h2>
       
-      {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
+      {currentWinnerScore ? (<h3>Highest roll is {currentWinnerScore}</h3>) : <></>}
       
       {props.players.map((player,index) => {
         return (

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import './styles/InputPlayer.css';
 
 export default function InputPlayer(props) {
   const { index, player, inputPlayers, setInputPlayers } = props;
