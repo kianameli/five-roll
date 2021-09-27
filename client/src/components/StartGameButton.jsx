@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';import { updateGameRecord } from "../services";
+import { Link } from 'react-router-dom'; import { updateGameRecord } from "../services";
+import './styles/StartGameButton.css'
 
 
 export default function StartGameButton(props) {
@@ -14,10 +15,11 @@ export default function StartGameButton(props) {
     setPlayers(inputPlayers);
   }
   return (
-    <div>
+    <div className="start-button">
         {(inputGameName.length && inputPlayers.length > 1) ?
-    <Link to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
-    : <button disabled >Start game</button>
+    <Link className="start-game-link" to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
+        : <div className="disabled-start-game-button">Start game</div>
+    // <button className="disabled-start-game-button" disabled >Start game</button>
   }
     </div>
   )

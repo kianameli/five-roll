@@ -34,19 +34,20 @@ export default function CreateGame(props) {
         inputPlayers={inputPlayers} setPlayers={props.setPlayers}
         newGameID={newGameID} setGameID={props.setGameID}
       />
-      <br/>
+
       {/* GAME NAME */}
+      <h4>Game name</h4>
       <input
         id="input-game-name"
         type="text"
         placeholder="Name this game"
         onChange={(e) => { setInputGameName(e.target.value) }}
       />
-      <br /><br />
+      <br />
       
       {/* PLAYERS */}
       <div>
-        PLAYERS
+        <h4>Players</h4>
         {inputPlayers.map((player, index) => {
           return (
             <InputPlayer key={index} index={index} player={player}

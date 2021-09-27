@@ -1,0 +1,22 @@
+.start-game-link {
+  text-decoration: none;
+  background-color: blueviolet;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 0 auto;
+  color: white;
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 5%;
+}
+.disabled-start-game-button {
+  text-decoration: none;
+  background-color: lightgray;
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 0 auto;
+  color: grey;
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 5%;
+}
