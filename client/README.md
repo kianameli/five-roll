@@ -84,23 +84,31 @@ Tell us how long you anticipate spending on each area of development. Be sure to
 
 Time frames are also key in the development cycle. You have limited time to code all parts of your app. Your estimates can then be used to evalute possibilities based on time needed and the actual time you have before the app must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add an additional hour or two to each component to play it safe. Throughout your project, keep track of your Time Invested and Actual Time and update your README regularly.
 
-| Component        | Priority | Estimated Time | Time Invested | Actual Time |
-| ---------------- | :------: | :------------: | :-----------: | :---------: |
-| Adding Form      |    H     |      3hrs      |    3.5hrs     |   3.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
-| Total            |    H     |      6hrs      |     5hrs      |    5hrs     |
+| Component                      | Priority | Estimated Time | Time Invested | Actual Time |
+| ------------------------------ | :------: | :------------: | :-----------: | :---------: |
+| Navbar                         |    M     |      3hrs      |     4hrs      |    4hrs     |
+| How To                         |    M     |      3hrs      |     2hrs      |    2hrs     |
+| Recent scores                  |    H     |      3hrs      |     4hrs      |    4hrs     |
+| POST                           |    H     |      3hrs      |     1hrs      |    1hrs     |
+| PUT                            |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Create game: players           |    H     |      3hrs      |     4hrs      |    4hrs     |
+| Create game: name              |    H     |      2hrs      |     2hrs      |    2hrs     |
+| Create game: start game button |    H     |      3hrs      |     4hrs      |    4hrs     |
+| Play game: layout              |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Play game: score               |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Play game: player turn         |    H     |      3hrs      |     4hrs      |    4hrs     |
+| Turn                           |    H     |      3hrs      |     6hrs      |    6hrs     |
+| Styling: general               |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Styling: turn                  |    H     |      3hrs      |     3hrs      |    3hrs     |
+| Styling: recent scores         |    H     |      3hrs      |     1hrs      |    1hrs     |
+| Total                          |    H     |     44hrs      |     43hrs     |    43hrs    |
 
 ## SWOT Analysis
 
-### Strengths:
+### Strengths: Clear game turns and play components
 
-### Weaknesses:
+### Weaknesses: Gameplay isn't great for players, too rigid and first-move advantage is OP. Design is ugly.
 
-### Opportunities:
+### Opportunities: Design/styling; improved play
 
-### Threats:
+### Threats: Attribution
