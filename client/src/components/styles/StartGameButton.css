@@ -7,7 +7,7 @@
   color: white;
   font-weight: bold;
   padding: 1%;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 .disabled-start-game-button {
   text-decoration: none;
@@ -18,5 +18,5 @@
   color: grey;
   font-weight: bold;
   padding: 1%;
-  border-radius: 5%;
+  border-radius: 5px;
 }

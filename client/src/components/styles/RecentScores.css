@@ -1,0 +1,16 @@
+.recent-scores {
+  margin-top: 5%;
+}
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: lightsteelblue 1px solid;
+  width: 70%;
+}
+th {
+  background-color: rgb(182, 108, 250);
+  border-bottom: lightsteelblue 2px solid;
+}
+tr {
+  border-bottom: lightsteelblue 1px solid;
+}

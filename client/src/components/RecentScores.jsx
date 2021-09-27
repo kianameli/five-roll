@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import axios from "axios";
+import './styles/RecentScores.css';
 
 const airtableBase = process.env.REACT_APP_AIRTABLE_BASE;
 const airtableKey = process.env.REACT_APP_AIRTABLE_KEY;
@@ -24,12 +25,33 @@ export default function RecentScores() {
   }, []);
  
   return (
-    <div>
-      {scores.map((record,index) => {
-        return (
-          <div key={index}>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
-        );
-      })}
+    <div className="recent-scores">
+      <table>
+        <thead>
+          <tr>
+            <th>Game</th>
+            <th>Player</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {scores.filter(record=>record.fields.score!==0)
+            .map((record, index) => {
+            return (
+              <tr key={index}>
+                <td>{record.fields.gameName}</td>
+                <td>{record.fields.winner}</td>
+                <td>{record.fields.score}</td>
+              </tr>
+            );
+          })}
+          {/* {scores.map((record,index) => {
+            return (
+              <div key={index}>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
+            );
+          })} */}
+        </tbody>
+        </table>
     </div>
   )
 }

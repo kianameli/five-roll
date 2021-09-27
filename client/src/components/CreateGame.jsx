@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchNewGameRecord } from '../services';
 import InputPlayer from './InputPlayer';
 import StartGameButton from './StartGameButton';
+import './styles/CreateGame.css'
 
 export default function CreateGame(props) {
   const [inputGameName, setInputGameName] = useState("");
@@ -28,12 +29,6 @@ export default function CreateGame(props) {
   return (
     <div>
       <br />
-
-      <StartGameButton
-        inputGameName={inputGameName} setGameName={props.setGameName}
-        inputPlayers={inputPlayers} setPlayers={props.setPlayers}
-        newGameID={newGameID} setGameID={props.setGameID}
-      />
 
       {/* GAME NAME */}
       <h4>Game name</h4>
@@ -63,7 +58,12 @@ export default function CreateGame(props) {
         id="add-player-button"
         onClick={handleAddPlayer}>Add player
       </button>
-      <br />           
+      <br /><br /><br />
+      <StartGameButton
+        inputGameName={inputGameName} setGameName={props.setGameName}
+        inputPlayers={inputPlayers} setPlayers={props.setPlayers}
+        newGameID={newGameID} setGameID={props.setGameID}
+      />
 
     </div>
   )

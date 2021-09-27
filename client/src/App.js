@@ -20,7 +20,6 @@ function App() {
     <div className="App">
       <header>
         <h1>Five Roll</h1>
-        <Navbar />
       </header>
 
       {/* ROUTES */}
@@ -29,9 +28,11 @@ function App() {
       </Route>
 
       <Route path="/how-to">
+        <Navbar page="how-to" />
         <HowTo />
       </Route>
       <Route path="/recent-scores">
+        <Navbar page="recent-scores" />
         <RecentScores />
       </Route>
       {/* 
@@ -39,6 +40,7 @@ function App() {
         <Game playGame={playGame} setPlayGame={setPlayGame} />
       </Route> */}
       <Route path="/create-game">
+        <Navbar page="create-game" />
         <CreateGame
           gameName={gameName}
           setGameName={setGameName}
@@ -49,6 +51,7 @@ function App() {
         />
       </Route>
       <Route exact path="/play-game/:id">
+        <Navbar page="play-game" />
         <PlayGame
           gameName={gameName}
           setGameName={setGameName}

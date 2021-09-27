@@ -6,87 +6,77 @@ Five Roll
 
 ## Project Description
 
-Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality.
+Five Roll lets users start a dice rolling game with multiple players and a name of their choosing. Players get to roll in turn and the winning score and player are recorded to AirTable and can be seen in the Recent Scores page.
 
 ## Wireframes
 
-Upload images of your wireframes to an image hosting site or add them to an assets folder in your repo and link them here with a description of each specific wireframe.
-
-## Component Hierarchy
-
-Show your component hierarchy here! Use [this](https://cms-assets.tutsplus.com/uploads/users/1795/posts/30352/image/GettingStartedWithReduxTutorial-React-Component-Structure.png) as an example.
+Wireframes and component hierarchy can be viewed [here.](https://whimsical.com/five-roll-9eLVUUW9J5wTsGZgWgUn7g)
 
 ## API and Data Sample
-
-Show us a snippet of JSON returned by your Airtable (you can find it under the API documentation) so we know you can access it and get the info you need. This **must** be properly formatted. An example is below:
 
 ```json
 {
   "records": [
     {
-      "id": "recONRzIUTuZ5lXaF",
+      "id": "recDiGvjQBVDV0QIu",
       "fields": {
-        "author": "Liz Yrineo",
-        "setup": "Why did the tomato turn red?",
-        "punchline": "Because it saw the salad dressing!"
+        "score": 10,
+        "winner": "Player1",
+        "gameName": "Game1"
       },
-      "createdTime": "2020-11-30T16:03:09.000Z"
+      "createdTime": "2021-09-20T15:05:09.000Z"
     },
     {
-      "id": "rec3oYZ5Tp0AIDsKe",
+      "id": "recHgW12b8Pk1Niq5",
       "fields": {
-        "author": "Rachel Moskowitz",
-        "setup": "What did the green grape say to the red grape?",
-        "punchline": "Breathe, idiot, breathe!"
+        "score": 20,
+        "winner": "Player2",
+        "gameName": "Game2"
       },
-      "createdTime": "2020-11-30T16:03:09.000Z"
+      "createdTime": "2021-09-20T15:05:09.000Z"
     },
     {
-      "id": "recA34tOaoE1IVeC1",
+      "id": "recwVj1VIpnqedu1Z",
       "fields": {
-        "author": "Gary Grant",
-        "setup": "How do you make holy water?",
-        "punchline": "You boil the hell out of it!"
+        "score": 6,
+        "winner": "Player3",
+        "gameName": "Game3"
       },
-      "createdTime": "2020-11-30T16:03:09.000Z"
+      "createdTime": "2021-09-20T15:05:09.000Z"
     }
   ],
-  "offset": "recA34tOaoE1IVeC1"
+  "offset": "recwVj1VIpnqedu1Z"
 }
 ```
 
 ### MVP/PostMVP
 
-The functionality will then be divided into two separate lists: MVP and PostMVP. Carefully decide what is placed into your MVP, as the client will expect this functionality to be implemented upon project completion.
-
 #### MVP
 
-_These are examples only. Replace with your own MVP features._
-
-- Find and use external api
-- Render data on page
-- Allow user to choose favorites
+- Create new game record in AirTable
+- Require game name and >1 players to start game
+- Allow user to change player names
+- Record winner and score to AirTable
+- Responsive design
 
 #### PostMVP
 
-_These are examples only. Replace with your own Post-MVP features._
-
-- Add second API
-- Use local storage to save user favorites
+- Let players choose dice to remove on roll tie
+- Allow tying players to roll for win (vs. favor first roller)
+- Better styling
 
 ## Project Schedule
 
-This schedule will be used to keep track of your progress throughout the week and align with our expectations. Here's an example.
-
-| Day        | Deliverable                                        | Status     |
-| ---------- | -------------------------------------------------- | ---------- |
-| July 10-12 | Prompt / Wireframes / Priority Matrix / Timeframes | Incomplete |
-| July 13    | Project Approval                                   | Incomplete |
-| July 13    | Core Application Structure (HTML, CSS, etc.)       | Incomplete |
-| July 14    | Pseudocode / actual code                           | Incomplete |
-| July 15    | Initial Clickable Model                            | Incomplete |
-| July 16    | MVP                                                | Incomplete |
-| July 17    | Presentations                                      | Incomplete |
+| Day          | Deliverable                                        | Status     |
+| ------------ | -------------------------------------------------- | ---------- |
+| September 20 | Prompt / Wireframes / Priority Matrix / Timeframes | Complete   |
+| September 20 | Project Approval                                   | Complete   |
+| September 21 | Core Application Structure (HTML, CSS, etc.)       | Complete   |
+| September 22 | Pseudocode / actual code                           | Complete   |
+| September 24 | Initial Clickable Model                            | Complete   |
+| September 25 | MVP                                                | Complete   |
+| September 27 | Styling                                            | Incomplete |
+| September 27 | Presentations                                      | Incomplete |
 
 ## Timeframes
 
@@ -97,6 +87,12 @@ Time frames are also key in the development cycle. You have limited time to code
 | Component        | Priority | Estimated Time | Time Invested | Actual Time |
 | ---------------- | :------: | :------------: | :-----------: | :---------: |
 | Adding Form      |    H     |      3hrs      |    3.5hrs     |   3.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
+| Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Working with API |    H     |      3hrs      |    2.5hrs     |   2.5hrs    |
 | Total            |    H     |      6hrs      |     5hrs      |    5hrs     |
 

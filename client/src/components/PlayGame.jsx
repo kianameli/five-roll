@@ -19,7 +19,7 @@ export default function PlayGame(props) {
       };
       updateScore(fields, id);
     }
-    if (currentTurn > props.players.length) {
+    if (currentTurn >= props.players.length) {
       setGameOver(true);
       updateWinnerScore();
     }
@@ -28,10 +28,8 @@ export default function PlayGame(props) {
 
   return (
     <div>
-      <h3>Welcome to {props.gameName}! </h3>
-      <h2>{gameOver ? `GAME OVER!` : ``}</h2>
-      
-      {currentWinnerScore ? (<h3>Highest roll is {currentWinnerScore}</h3>) : <></>}
+      <h3>{gameOver ? `GAME OVER!` : `Welcome to ${props.gameName}!`}</h3>      
+      {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
       
       {props.players.map((player,index) => {
         return (
