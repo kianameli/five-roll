@@ -26,9 +26,7 @@ export default function InputPlayer(props) {
       {/* REMOVE PLAYER */}
       <button
         id="remove-player-button"
-        onClick={() => handleRemovePlayer(player)}
-      >x
-      </button>
+        onClick={() => handleRemovePlayer(player)}>x</button>
     </div>
   );
 }

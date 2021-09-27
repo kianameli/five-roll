@@ -7,7 +7,6 @@ export default function StartGameButton(props) {
   const { inputGameName, setGameName, inputPlayers, setPlayers, newGameID, setGameID } = props;
 
   async function handleStartGame(e) {
-    // e.preventDefault();
     const fields = { gameName: inputGameName, winner:"none", score: 0 };
     await updateGameRecord(fields, newGameID);
     setGameID(newGameID);
@@ -17,9 +16,8 @@ export default function StartGameButton(props) {
   return (
     <div className="start-button">
         {(inputGameName.length && inputPlayers.length > 1) ?
-    <Link className="start-game-link" to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
+          <Link className="start-game-link" to={`/play-game/${newGameID}`} onClick={handleStartGame}> Start game</Link>
         : <div className="disabled-start-game-button">Start game</div>
-    // <button className="disabled-start-game-button" disabled >Start game</button>
   }
     </div>
   )

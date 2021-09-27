@@ -17,9 +17,9 @@ export default function Turn(props) {
         if (die.removed) {
           die.score = 0;
         } else {
-        die.score = Math.floor(Math.random() * (die.sides - 1) + 1);
-        lowestRoll = die.score < lowestRoll ? die.score : lowestRoll;
-        highestRoll = die.score > highestRoll ? die.score : highestRoll;
+          die.score = Math.floor(Math.random() * (die.sides - 1) + 1);
+          lowestRoll = die.score < lowestRoll ? die.score : lowestRoll;
+          highestRoll = die.score > highestRoll ? die.score : highestRoll;
         }
         return die;
       })
@@ -29,7 +29,6 @@ export default function Turn(props) {
       });
     setDice(newDice);
     if (newDice.filter(die => !die.removed).length === 1) {
-      //props.setScore(highestRoll);
       setTurnHighestRoll(highestRoll);
       setEndTurn(true);
     }
@@ -47,7 +46,6 @@ export default function Turn(props) {
       </div>
       {endTurn ? <button onClick={handleEndTurn}>End turn</button>
         : <button onClick={handleRoll}>Roll</button>}
-
     </div>
   )
 }

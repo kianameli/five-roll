@@ -35,7 +35,8 @@ export default function RecentScores() {
           </tr>
         </thead>
         <tbody>
-          {scores.filter(record=>record.fields.score!==0)
+          {scores
+            .filter(record => record.fields.score !== 0)
             .map((record, index) => {
             return (
               <tr key={index}>
@@ -45,11 +46,6 @@ export default function RecentScores() {
               </tr>
             );
           })}
-          {/* {scores.map((record,index) => {
-            return (
-              <div key={index}>{record.fields.gameName} {record.fields.winner} {record.fields.score}</div>
-            );
-          })} */}
         </tbody>
         </table>
     </div>

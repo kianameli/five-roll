@@ -30,7 +30,6 @@ export default function PlayGame(props) {
     <div>
       <h3>{gameOver ? `GAME OVER!` : `Welcome to ${props.gameName}!`}</h3>      
       {currentWinnerScore ? (<h3>{currentWinnerName} leads with {currentWinnerScore}</h3>) : <></>}
-      
       {props.players.map((player,index) => {
         return (
           <Player key={index}
